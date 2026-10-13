@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanka Voyage: tailor-made Sri Lanka and Maldives holidays</title>
+<meta name="description" content="Plan and book tailor-made Sri Lanka and Maldives holidays with local experts, clear prices and secure online booking.">
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header id="top">
+  <a class="logo" href="#top">Lanka Voyage</a>
+  <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
+  <nav id="nav">
+    <a href="#packages">Packages</a>
+    <a href="#why">Why us</a>
+    <a href="#contact">Plan a trip</a>
+    <button id="bookingsBtn" class="link" hidden>My bookings</button>
+    <button id="authBtn" class="btn small">Log in</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1>Sri Lanka and the Maldives, planned by people who live there</h1>
+      <p class="lead">Private drivers, hand-picked stays and clear prices. Tell us where you want to go.</p>
+      <form id="searchForm" class="search" role="search">
+        <input id="q" type="search" placeholder="Try Ella, safari or beach" aria-label="Search destination or activity" maxlength="60">
+        <select id="maxPrice" aria-label="Maximum price per person">
+          <option value="">Any budget</option>
+          <option value="900">Up to $900</option>
+          <option value="1500">Up to $1,500</option>
+          <option value="3000">Up to $3,000</option>
+        </select>
+        <button class="btn">Find trips</button>
+      </form>
+    </div>
+    <svg class="island" viewBox="0 0 300 420" role="img" aria-label="Map of Sri Lanka with a sample route from Negombo to Kandy, Sigiriya, Ella and Galle">
+      <path class="land" d="M150 12C190 40 230 90 238 160C246 230 222 300 190 350C170 380 150 404 132 392C100 372 70 310 62 240C54 170 80 110 104 62C118 34 134 18 150 12Z"/>
+      <path class="route" pathLength="1" d="M92 215C115 200 130 190 150 175C165 160 150 120 158 100M150 175C175 205 190 240 192 270C190 300 150 330 120 340"/>
+      <g class="stops">
+        <g><circle cx="92" cy="215" r="5"/><text x="104" y="232">Negombo</text></g>
+        <g><circle cx="150" cy="175" r="5"/><text x="162" y="180">Kandy</text></g>
+        <g><circle cx="158" cy="100" r="5"/><text x="170" y="104">Sigiriya</text></g>
+        <g><circle cx="192" cy="270" r="5"/><text x="140" y="262">Ella</text></g>
+        <g><circle cx="120" cy="340" r="5"/><text x="134" y="352">Galle</text></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="packages" class="wrap">
+  <h2>Trips you can book today</h2>
+  <div class="tools">
+    <div id="chips" class="chips" role="group" aria-label="Filter by trip type">
+      <button data-cat="" aria-pressed="true">All trips</button>
+      <button data-cat="Culture" aria-pressed="false">Culture</button>
+      <button data-cat="Beach" aria-pressed="false">Beach</button>
+      <button data-cat="Wildlife" aria-pressed="false">Wildlife</button>
+      <button data-cat="Luxury" aria-pressed="false">Luxury</button>
+    </div>
+    <label class="sortl">Sort by
+      <select id="sort"><option value="rating">Top rated</option><option value="price">Lowest price</option></select>
+    </label>
+  </div>
+  <div id="grid" class="grid" aria-live="polite"><p class="empty">Loading trips...</p></div>
+</section>
+
+<section id="why" class="wrap">
+  <h2>What you get when you book with us</h2>
+  <dl class="why">
+    <div><dt>One driver for the whole trip</dt><dd>Your driver-guide knows the roads, the temples and the best lunch stops, and stays with you from the airport to departure.</dd></div>
+    <div><dt>Prices before you ask</dt><dd>Every package shows a starting price per person. No surprise fees at checkout.</dd></div>
+    <div><dt>Changes without stress</dt><dd>Send us a message and we adjust hotels, dates and activities around you.</dd></div>
+    <div><dt>Secure accounts</dt><dd>Passwords are hashed, sessions expire, and we never ask for card details on this site.</dd></div>
+  </dl>
+</section>
+
+<section id="contact" class="wrap narrow">
+  <h2>Tell us about your trip</h2>
+  <p class="sub">Share dates, group size and what you love. We reply with a tailored plan.</p>
+  <form id="inqForm" class="form">
+    <label>Your name<input id="iName" required minlength="2" maxlength="80" autocomplete="name"></label>
+    <label>Email<input id="iEmail" type="email" required maxlength="120" autocomplete="email"></label>
+    <label>Your trip<textarea id="iMsg" rows="5" required minlength="10" maxlength="1500"></textarea></label>
+    <button class="btn">Send my request</button>
+  </form>
+</section>
+</main>
+
+<footer>
+  <p>Lanka Voyage. Licensed destination management for Sri Lanka and the Maldives.</p>
+  <p><a href="/privacy.html">Privacy policy</a> <a href="/terms.html">Terms and conditions</a></p>
+</footer>
+
+<dialog id="pkgDlg" aria-label="Trip details"></dialog>
+
+<dialog id="authDlg" aria-labelledby="authTitle">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <h2 id="authTitle">Log in</h2>
+  <form id="authForm" class="form">
+    <label id="nameRow" hidden>Your name<input id="name" maxlength="80" autocomplete="name"></label>
+    <label>Email<input id="email" type="email" required maxlength="120" autocomplete="email"></label>
+    <label>Password<input id="password" type="password" required minlength="8" maxlength="72" autocomplete="current-password"></label>
+    <p id="authErr" class="err" role="alert"></p>
+    <button id="authSubmit" class="btn">Log in</button>
+    <button id="authSwitch" type="button" class="link">New here? Create an account</button>
+  </form>
+</dialog>
+
+<dialog id="bkDlg" aria-labelledby="bkTitle">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <h2 id="bkTitle">My bookings</h2>
+  <div id="bkList"></div>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
